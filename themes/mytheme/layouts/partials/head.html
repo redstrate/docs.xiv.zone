@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="{{ .Site.LanguageCode }}"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <meta name="theme-color" content="#fffff" media="(prefers-color-scheme: light)"/>
+    <meta name="theme-color" content="rgb(77, 77, 82)" media="(prefers-color-scheme: dark)"/>
+
+    {{ if .IsHome }}
+    <meta name="description" content="{{ $.Site.Params.description }}"/>
+    <title>{{.Site.Title}}</title>
+    {{ else }}
+    <title>{{.Site.Title}} - {{ .Title }}</title>
+    <meta name="description" content="{{ .Summary }}"/>
+    {{ end }}
+
+    <link rel="canonical" href="{{ .Permalink }}" />
+    <base href="{{ .Site.BaseURL }}">
+
+    {{ if .IsHome }}
+        {{ with .OutputFormats.Get "RSS" }}
+        <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Title }}"/>
+        {{ end }}
+    {{ end }}
+
+    {{ $css := resources.Get "css/style.css" | resources.Minify | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+
+    <script async defer data-website-id="587f22ec-d579-43f6-a720-c516ec987952" src="https://salamis.ryne.moe/euripides.js" data-domains="xiv.zone" data-do-not-track="true"></script>
+</head>

@@ -1,0 +1,14 @@
+<header>
+  <h1><a href="/">{{ .Site.Title}}</a></h1>
+
+  <nav id="header-links">
+    {{ range .Site.Menus.main }}
+      {{ $icon := .Params.icon}}
+      {{ if eq $.RelPermalink .URL }}
+      <p class="header-link" >{{ partial "svg" $icon }} {{ .Name }}</p>
+      {{ else }}
+      <a class="header-link" href="{{ .URL  }}">{{ partial "svg" $icon }} {{ .Name }}</a>
+      {{ end }}
+    {{ end }}
+  </nav>
+</header>

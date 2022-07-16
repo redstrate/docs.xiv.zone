@@ -1,0 +1,9 @@
+{{ define "main" }}
+
+{{ range .Data.Pages.ByDate.Reverse }}
+<h2>{{ .Title }}</h2>
+{{ .Content }}
+<hr>
+{{ end }}
+
+{{ end }}

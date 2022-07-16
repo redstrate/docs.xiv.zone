@@ -1,0 +1,10 @@
+name = "xiv.zone theme"
+license = "MIT"
+description = "A simple theme."
+tags = []
+features = []
+min_version = "0.41.0"
+
+[author]
+  name = "Joshua Goins"
+  homepage = "https://redstrate.com"

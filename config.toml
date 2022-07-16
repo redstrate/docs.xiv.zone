@@ -1,0 +1,20 @@
+languageCode = "en-us"
+title = "docs.xiv.zone"
+theme = "mytheme"
+summaryLength = 30
+disableHugoGeneratorInject = true
+enableEmoji = true
+
+[privacy]
+  [privacy.disqus]
+    disable = true
+  [privacy.googleAnalytics]
+    disable = true
+  [privacy.instagram]
+    disable = true
+  [privacy.twitter]
+    disable = true
+  [privacy.vimeo]
+    disable = true
+  [privacy.youtube]
+    disable = true

@@ -1,0 +1,15 @@
+{{ $title := .Get "title"}}
+{{ $desc := .Get "description" }}
+
+{{ if (.Get "url") }}
+<a href='{{.Get "url"}}' class="blurb-button">
+{{ else }}
+<div class="blurb">
+{{ end }}
+<h4>{{$title}}</h4>
+<p>{{$desc}}</p>
+{{ if (.Get "url") }}
+</a>
+{{ else }}
+</div>
+{{ end }}
