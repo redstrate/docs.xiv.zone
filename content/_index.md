@@ -1,4 +1,4 @@
-This is my collection of everything I know, and that I collected on FFXIV inner workings. This information was previously hosted in my [ffxiv-info repository](https://git.sr.ht/~redstrate/ffxiv-info), but moved here.
+This is my collection of everything I know, and that I collected on FFXIV inner workings. This information was previously hosted in my ffxiv-info repository on GitHub, but moved here to it's own website.
 
 Developers, please look at the end of each page for example implementations that I know of. I find it incredibly useful to look at them, especially if I'm stuck on implementing something. If you have a project that you want to add to the list or suggest any kind of edit, don't hesitate to [email me](https://redstrate.com/about) or [fix it yourself](https://git.sr.ht/~redstrate/docs.xiv.zone)!
 
