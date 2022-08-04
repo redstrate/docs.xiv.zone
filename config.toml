@@ -4,6 +4,7 @@ theme = "mytheme"
 summaryLength = 30
 disableHugoGeneratorInject = true
 enableEmoji = true
+baseURL = "https://docs.xiv.zone/"
 
 [privacy]
   [privacy.disqus]

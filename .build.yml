@@ -1,0 +1,17 @@
+image: alpine/edge
+packages:
+  - rsync
+  - git
+  - hugo
+sources:
+  - https://git.sr.ht/~redstrate/docs.xiv.zone
+secrets:
+  - b748582a-5d31-4fe8-94d6-4a63035e97aa
+tasks:
+  - build: |
+      cd docs.xiv.zone
+      hugo
+  - deploy: |
+      cd docs.xiv.zone
+      echo "StrictHostKeyChecking=no" >> ~/.ssh/config
+      rsync -Wvr public/ deploy@ryne.moe:/var/ryne/sync/docs.xiv.zone
