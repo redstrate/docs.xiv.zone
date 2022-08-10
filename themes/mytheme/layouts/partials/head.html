@@ -34,5 +34,7 @@
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
 
-    <script async defer data-website-id="587f22ec-d579-43f6-a720-c516ec987952" src="https://salamis.ryne.moe/euripides.js" data-domains="xiv.zone" data-do-not-track="true"></script>
+    {{ if and (hugo.IsProduction) (eq .Site.BaseURL "https://docs.xiv.zone/") }}
+        <script async defer data-website-id="b80c34df-d829-4e4d-8b8d-0ea762224a73" src="https://salamis.ryne.moe/umami.js" data-domains="docs.xiv.zone" data-do-not-track="true"></script>
+    {{ end }}
 </head>
