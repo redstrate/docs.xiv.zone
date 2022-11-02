@@ -14,4 +14,4 @@ tasks:
   - deploy: |
       cd docs.xiv.zone
       echo "StrictHostKeyChecking=no" >> ~/.ssh/config
-      rsync -Wvr public/ deploy@ryne.moe:/var/ryne/sync/docs.xiv.zone
+      rsync -e 'ssh -p 38901' -Wvr public/ deploy@ryne.moe:/srv/http/docs.xiv.zone
