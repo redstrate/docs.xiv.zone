@@ -33,8 +33,4 @@
     <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}" />
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-
-    {{ if and (hugo.IsProduction) (eq .Site.BaseURL "https://docs.xiv.zone/") }}
-        <script async defer data-website-id="b80c34df-d829-4e4d-8b8d-0ea762224a73" src="https://salamis.ryne.moe/umami.js" data-domains="docs.xiv.zone" data-do-not-track="true"></script>
-    {{ end }}
 </head>
