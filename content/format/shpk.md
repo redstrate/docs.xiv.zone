@@ -2,9 +2,13 @@
 title: "SHPK"
 ---
 
+**Note**: Resource and scalar parameters are not documented yet.
+
 These are "shader packages" or a collection of vertex and pixel shaders. A good example is _"character.shpk"_ which contains - you guessed it - character shaders.
 
 # Header Structure
+
+All values are in **little-endian**.
 
 | Offset | Type | Purpose |
 | ------ | ----- | ------ |
@@ -25,4 +29,9 @@ Getting the shader bytecode from a shader package is easy, it begins at the shad
 
 Then, collect a WORD (4 bytes) at a time and putting them into a buffer. Keep doing this until you hit the next `DXBC` ASCII and you found a complete shader bytecode. Rinse and repeat and you should have `N` shaders where `N = number of vertex shaders + number of pixel shaders`.
 
-The format of this shader bytecode is nothing special, it's simply DXBC (the bytecode format used by DirectX before DXIL). If you want to reverse this into something usable, like SPIR-V, HLSL or GLSL then you need to find a decompiler.
+The format of this shader bytecode is nothing special, it's DXBC (the bytecode format used by DirectX before DXIL.) If you want to reverse this into something usable, like SPIR-V, HLSL or GLSL then you need to find a decompiler.
+
+# Alternative Implementations
+
+* [SaintCoinach (C#)](https://github.com/xivapi/SaintCoinach/blob/master/SaintCoinach/Graphics/ShPk/ShPkFile.cs)
+* [physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/shpk.rs)
