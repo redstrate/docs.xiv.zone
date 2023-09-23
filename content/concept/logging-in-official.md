@@ -4,16 +4,15 @@ title: "Logging into Official Servers"
 
 **Note:** This article currently only covers logging in via non-Steam Square Enix accounts.
 
-Logging into the official FFXIV servers is actually very simple, and all you need is the ability to send/receive HTTP requests, create JSON responses and read some files off of the disk.
+Logging into the official FFXIV servers is actually very simple, and all you need is the ability to send/receive HTTP requests, parse JSON responses and read some files off of the disk.
 
-You'll notice below each HTTP request is a series of bullet points. These are HTTP request fields that **must** be filled. This is not a mere suggestion, as we want to closely emulate the official launcher as possible, else you will get nonsensical errors and things won't work.
+If you're wondering about the safety of these calls, as long as you don't do anything stupid (i.e. throw a 1 megabyte username into a form) then your account is safe. I guess Square Enix doesn't care about these endpoints too much, because even if you log into the game legitimately a hundred times in an hour they don't care. However, if you try logging into the account with invalid credentials, then it might get locked.
 
 You'll also notice the variable `{unique_id}` used in some of the User Agents. This is a unique id used by the official launcher, for an unknown purpose. However, any sort of unique ID will work.
 
+# Checking the Gate Status
 
-## Checking the Gate Status
-
-First of all, you want to check if you can _even_ log in the first place. This is extremely important, as the official launcher refuses to "pass the gate" so to speak. If you allow your launcher to bypass this, you're at your own risk **as Square Enix does not expect legitimate users to enter under maintenance servers**.
+First you must check the gate status, which tells if the servers are under maintenance. The legitimate launcher will not allow you to log in if the gate is closed. **Square Enix does not expect legitimate users to enter servers under maintenance**, not that you even can.
 
 **GET** `https://frontier.ffxiv.com/worldStatus/gate_status.json`
 
@@ -27,7 +26,7 @@ The response is a simple JSON as follows:
 
 If the `status` is 1, the gate is open and you're free to log in. Any other value should indicate that you should not attempt to log in, the gate is "closed".
 
-## Boot Update Check
+# Boot Update Check
 
 You also need to ensure that the boot components of the game are properly updated.
 
@@ -36,15 +35,11 @@ You also need to ensure that the boot components of the game are properly update
 **GET** `http://patch-bootver.ffxiv.com/http/win32/ffxivneo_release_boot/{boot_version}`
 * User Agent: `FFXIV PATCH CLIENT` (macOS: `FFXIV-MAC PATCH CLIENT`)
 * Host: `patch-bootver.ffxiv.com`
+* `{boot_version}` is the version stored in `$GAME_DIR/boot/boot.ver`.
 
-`{boot_version}` is the version stored in `$GAME_DIR/boot/boot.ver`.
+If you receive an empty response, then you don't need to update any of your boot components and proceed to the next step. However if your boot components are out of date, you will receive a list of patches to update.
 
-If you receive an empty response, then you don't need to update any of your boot components. However if your boot components are out of date, you will receive a list of patches to
-update.
-
-## Getting _STORED_
-
-The next prerequisite we need is the `_STORED_` value. This is pretty simple though.
+## Getting STORED
 
 **GET** `https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top`
 * Query items:
@@ -68,11 +63,11 @@ The response is actually fully formed HTML, most likely better suited for the re
 
 To get the `_STORED_` value, use `\t<\s*input .* name="_STORED_" value="(?<stored>.*)">` and use the second captured variable. You also need to the store the full URL of this request (including all of the queries) for use in the next request.
 
-If you get an error during this response, it may indicate that the Square Enix servers are down for maintenance. Make sure to check the gate status!
+If you get an error during this response, it may indicate that the Square Enix servers are down for maintenance.
 
-## Logging in
+# Logging in
 
-Now you have all of the needed variables to actually attempt a log in!
+Now it's time to perform the first step of logging in:
 
 **POST** `https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/login.send`
 * Query items:
@@ -96,25 +91,23 @@ If you do not manage to get a match, this means there is a general account error
 
 However if you do get a match, that's good but there's still quite a bit of parsing to do. First you'll want to split the second captured group since it's a comma-separated string. There are multiple parts which we'll refer to by name:
 
-parts[1] is `{SID}`
-
-parts[3] is `{terms}`
-
-parts[5] is `{region}`
-
-parts[9] is `{playable}`
-
-parts[13] is `{max_expansion}`
+* parts[1] is `{SID}`
+* parts[3] is `{terms}`
+* parts[5] is `{region}`
+* parts[9] is `{playable}`
+* parts[13] is `{max_expansion}`
 
 First you'll want to check if the account is even playable, which of course is checking to see if `{playable}` is 1. This may indicate billing or license issues with that account. You'll want to check if `{terms}` is 1 as well, which indicates that there's a terms of service agreement the account must sign.
 
 The `{SID}`, `{region}` and `{max_expansion}` will be needed later, so store these variables.
 
-## Calculating the boot hash
+Now that we got an SID, you may expect that we can now log into the game! Well you'd be wrong, as we still have to register a session with the lobby server. If you attempt to launch the client with the `{SID}` you got, the lobby server will disconnect you as soon as you log in.
 
-Before we can register the session, we must first calculate the hashes of everything in the boot directory. Why you ask? I guess this is Square Enix's idea of security.
+# Calculating the boot hash
 
-Here's the file list we need to start with:
+We need to calculate the hashes of everything in the boot directory. Why you ask? I guess this is Square Enix's idea of security.
+
+Here's the files we need to hash:
 
 * fxivboot.exe
 * ffxivboot64.exe
@@ -123,23 +116,29 @@ Here's the file list we need to start with:
 * ffxivupdater.exe
 * ffxivupdater64.exe
 
-For each and every file in that list, we use to build a string like so:
+We now build a string like this:
 
 ```
 {file_name}/{file_hash},...
 ```
 
-Please note that it's **comma separated** and there is no newlines. The file hash is simply the SHA1 of the file (yes, really, SHA1) and it's formatted as follows:
+Please note that it's **comma separated** and there is no newlines. The file hash is simply the SHA1 of the file (yes, really, SHA1). However, it's not just the SHA1 and must also be sent with the file size in bytes:
 
 ```
 {file_size}/{file_sha1}
 ```
 
-You'll want to store this completed hash as `{boot_hash}` for the next step.
+The final string might look something like this:
 
-## Registering a Session
+```
+ffxivboot.exe/256/fea677811b91f51a9f66dcb809a94ddac480f054,ffxivboot64.exe...
+```
 
-Now that we got an SID, you may expect that we can now log into the game! Well you'd be wrong, as we still have to register a session with the lobby server. If you attempt to launch the client with the `{SID}` you got, the lobby server will disconnect you as soon as you log in. Square Enix expects the launcher to pass it's "security check" next, and this request will also check for if any game updates are required too.
+You'll want to store this completed hash as the variable `{boot_hash}` for the next step.
+
+# Registering a Session
+
+Square Enix expects the launcher to pass it's "security check" next, and this request will also check for if any game updates are required too.
 
 **Note:** `{game_version}` is referring to the version stored in `$GAME_DIR/game/ffxivgame.ver`.
 
@@ -166,7 +165,7 @@ The `{true_SID}` is now the value of the `X-Patch-Unique-ID` field. Congratulati
 
 ## Launching the game
 
-Now you can launch the game! See [ffxiv.exe](executable/ffxiv) for more information. For a quick rundown:
+Now you can launch the game! See [ffxiv.exe](executable/ffxiv) for more arguments. For a quick rundown:
 * Set `DEV.TestSID` to `{true_SID}`.
 * Set `DEV.MaxEntitledExpansionID` to `{max_expansion}`.
 * Set `SYS.Region` to `{region}`.

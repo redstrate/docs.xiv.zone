@@ -4,7 +4,7 @@ title: "Logging into Sapphire Servers"
 
 Luckily Sapphire has a much, much easier login process than the official servers, which only consist of one or two requests.
 
-## Logging in
+# Logging in
 
 **POST** `http(s)://{sapphire_lobby_url}/sapphire-api/lobby/login`
 
@@ -29,7 +29,7 @@ The response is also JSON, and if it's not empty (which indicates a login error)
 }
 ```
 
-Now you can launch the game! See [ffxiv.exe](executable/ffxiv) for more information. For a quick rundown:
+Now you can launch the game! See [ffxiv.exe](executable/ffxiv) for more arguments. For a quick rundown:
 * Set `DEV.TestSID` to `{SID}`.
 * Set `DEV.MaxEntitledExpansionID` to your desired expansion level.
 * Set `SYS.Region` to 3.
@@ -37,7 +37,7 @@ Now you can launch the game! See [ffxiv.exe](executable/ffxiv) for more informat
 * Set `DEV.LobbyHost01`...`DEV.LobbyHost09` to `{lobby_host}`.
 * Set `DEV.LobbyPort01`...`DEV.LobbyPort09` to your Sapphire lobby's port - usually 54994.
 
-## Registering an account
+# Registering an account
 
 **POST** `http(s)://{sapphire_lobby_url}/sapphire-api/lobby/createAccount`
 
