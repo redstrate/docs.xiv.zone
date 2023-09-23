@@ -4,7 +4,7 @@ title: "ffxiv.exe"
 
 This is the actual game executable, and theres two versions - one for DX9 and DX11. You'll almost always be using the DX11 version, called `ffxiv_dx11.exe`.
 
-## Arguments
+# Arguments
 
 * DEV.DataPathType
     * **Guessing** that this controls the asset data type used by the client, this is will always be `1`.
@@ -29,6 +29,6 @@ This is the actual game executable, and theres two versions - one for DX9 and DX
 
 **Note:** For benchmark versions of the game, there is a whole host of graphical options available as game arguments - but this seems to be missing in the retail version.
 
-## Alternative Implementations
+# Alternative Implementations
 
 None.

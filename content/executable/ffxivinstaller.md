@@ -14,6 +14,7 @@ To find them, simply find the needle string "Disk1\\{FileName}" where FileName i
 
 They are simply put right next to each other in the executable, so if you follow that order you'll find each of them quite easily.
 
-## Alternative Implementations
+# Alternative Implementations
 
+* [physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/installer.rs)
 * [libxiv (C++)](https://git.sr.ht/~redstrate/libxiv/tree/main/src/installextract.cpp)

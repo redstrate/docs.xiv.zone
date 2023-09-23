@@ -2,7 +2,7 @@
 title: "ffxivlauncher.exe"
 ---
 
-## Arguments
+# Arguments
 
 **Note:** Just like the other executables, it requires you to pass these using the [SqexArg](concept/sqexarg) format.
 
@@ -24,7 +24,7 @@ title: "ffxivlauncher.exe"
     - Your usual path to your FFXIV data folder in Documents.
 
 
-## Alternative Implementations
+# Alternative Implementations
 
 * [XIVQuickLauncher (C#)](https://github.com/goatcorp/FFXIVQuickLauncher)
 * [Astra (C++)](https://sr.ht/~redstrate/astra/)
