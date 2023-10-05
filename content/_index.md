@@ -27,6 +27,7 @@ Developers, please look at the end of each page for example implementations that
 * [SqexArg](concept/sqexarg) - Encrypted game arguments (sqexarg).
 * [Equipment](concept/equipment) - All about reading equipment data ala TexTools.
 * [Dalamud](concept/dalamud) - Launching Dalamud without the help of XIVQuickLauncher.
+* [Building Dalamud plugins on Linux](concept/dalamud-plugin-dev) - Building Dalamud plugins on Linux, without Visual Studio.
 
 # File Formats
 
