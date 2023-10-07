@@ -2,7 +2,7 @@
 title: "Logging into Sapphire Servers"
 ---
 
-Luckily Sapphire has a much, much easier login process than the official servers, which only consist of one or two requests.
+[Sapphire](https://github.com/SapphireServer/Sapphire/) has a much, much easier login process than [the official servers]({{< ref "concept/logging-in-official" >}}), which only consist of one or two requests.
 
 # Logging in
 

@@ -46,6 +46,14 @@ a:visited {
     color: var(--link-color-visited)
 }
 
+header h1 {
+    margin-left: 1em;
+}
+
+footer {
+    margin-left: 1em;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -69,8 +77,9 @@ main {
     margin: 2px;
 }
 
-main > h2 {
-    margin: 0px;
+aside {
+    margin: 5px;
+    flex: 25em 0 0;
 }
 
 @media screen and (max-width: 900px) {
@@ -91,6 +100,10 @@ main > h2 {
         margin-left: 10px;
         margin-right: 10px;
     }
+}
+
+#content {
+    display: flex;
 }
 
 footer {
@@ -123,4 +136,30 @@ footer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     margin: auto;
+}
+
+
+.note {
+    padding: 1em;
+    border-radius: 7px;
+    margin: 0.5em;
+    text-decoration: none;
+    background-color: #ecd89c;
+}
+
+.note p {
+    margin: 0em;
+}
+
+
+.info {
+    padding: 1em;
+    border-radius: 7px;
+    margin: 0.5em;
+    text-decoration: none;
+    background-color: #caebff;
+}
+
+.info p {
+    margin: 0em;
 }

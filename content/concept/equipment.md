@@ -2,9 +2,9 @@
 title: "Equipment"
 ---
 
-**Note:** This section is currently incomplete, and may be missing information for weapons, demihumans, other races and slot types.
+{{< note "This documentation is incomplete nd may be missing information for weapons, demihumans, other races and slot types." >}}
 
-This is useful for people implementing similar TexTools or FFXIV Explorer functionality, and it's actually trivial to do so. Before you can do so, you must be able to read [Excel data sheets](formats/exd).
+This is useful for people implementing similar TexTools or FFXIV Explorer functionality, and it's actually trivial to do so. Before you can do so, you must be able to read [Excel data sheets]({{< ref "format/exd" >}}).
 
 # Read item data
 

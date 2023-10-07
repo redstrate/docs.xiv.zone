@@ -1,10 +1,10 @@
 ---
-title: "SHPK"
+title: "Shader Package (.shpk)"
 ---
 
-**Note**: Resource and scalar parameters are not documented yet.
+{{< note "This documentation is incomplete, resource and scalar parameters are not documented yet." >}}
 
-These are "shader packages" or a collection of vertex and pixel shaders. A good example is _"character.shpk"_ which contains - you guessed it - character shaders.
+A collection of vertex and pixel shaders. A good example is _"character.shpk"_ which contains - you guessed it - character shaders.
 
 # Header Structure
 
@@ -34,4 +34,4 @@ The format of this shader bytecode is nothing special, it's DXBC (the bytecode f
 # Alternative Implementations
 
 * [SaintCoinach (C#)](https://github.com/xivapi/SaintCoinach/blob/master/SaintCoinach/Graphics/ShPk/ShPkFile.cs)
-* [physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/shpk.rs)
+* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/shpk.rs)

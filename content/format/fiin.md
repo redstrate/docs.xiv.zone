@@ -1,6 +1,8 @@
-# .fiin
+---
+title: "File Info (.fiin)"
+---
 
-I don't know the actual purpose of this file, but it was a fun reverse-engineering exercise. These are usually listed like `fileinfo.fiin` (like in `/boot`) and start with a header like this:
+I don't know the actual purpose of this file, it seems to contain SHA1 of certain files. The filename is usually `fileinfo.fiin` (like in `/boot`) and start with a header like this:
 
 ```
 struct FileInfoHeader {
@@ -39,6 +41,7 @@ struct FileInfoEntry {
 
 This file appears to have SHA1 hashes, but for what purpose I do not know.
 
-## Alternative Implementations
+# Alternative Implementations
 
+* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/fiin.rs)
 * [libxiv (C++)](https://git.sr.ht/~redstrate/libxiv/tree/main/item/src/fiinparser.cpp)

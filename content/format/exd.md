@@ -1,15 +1,17 @@
 ---
-title: "EXD"
+title: "Excel Data (.exd)"
 ---
 
-**Note:** To prevent confusion, "Excel" as described has nothing to do with Microsoft's Excel.
+{{< info "'Excel' here has nothing to do with Microsoft's Excel." >}}
+{{< note "This documentation is incomplete." >}}
 
-**Note:** This documentation is incomplete.
+The data file for an Excel sheet.
 
 I recommend reading the ["Excel Data" section](https://xiv.dev/game-data/file-formats/excel#excel-data-.exd) on xiv.dev's Excel docs.
 
-## Alternative Implementations
+# Alternative Implementations
 
+* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/exd.rs)
 * [xivModdingFramework (C#)](https://github.com/TexTools/xivModdingFramework/tree/master/xivModdingFramework/Exd)
 * [Lumina (C#)](https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Data/Files/Excel/ExcelDataFile.cs)
 * [libxiv (C++)](https://git.sr.ht/~redstrate/libxiv/tree/main/item/src/exdparser.cpp)

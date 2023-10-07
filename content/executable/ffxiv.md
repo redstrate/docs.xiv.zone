@@ -1,8 +1,10 @@
 ---
-title: "ffxiv.exe"
+title: "Client (ffxiv.exe)"
 ---
 
-This is the actual game executable, and theres two versions - one for DX9 and DX11. You'll almost always be using the DX11 version, called `ffxiv_dx11.exe`.
+This is the game client executable.
+
+{{< note "There are two separate executables for DirectX 11 and DirectX 9. The DX11 version is named `ffxiv_dx11.exe`. The DX9 version will be removed in a future update." >}}
 
 # Arguments
 
@@ -27,8 +29,9 @@ This is the actual game executable, and theres two versions - one for DX9 and DX
 * DEV.LobbyPort0X
     * This is the port number of the Nth lobby available to the client, these are numbered 0-9. If empty, this will default to the official Square Enix lobbies.
 
-**Note:** For benchmark versions of the game, there is a whole host of graphical options available as game arguments - but this seems to be missing in the retail version.
+{{< info "For benchmark versions of the game, there is a whole host of graphical options available as game arguments - but this seems to be missing in the retail version." >}}
 
 # Alternative Implementations
 
-None.
+* [SaBOTender (C#)](https://github.com/shalzuth/SaBOTender)
+    * Implements very basic networking capabilities.

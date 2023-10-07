@@ -1,12 +1,14 @@
 ---
-title: "ffxivupdater.exe"
+title: "Updater (ffxivupdater.exe)"
 ---
 
-**Note:** This is unconfirmed information, as I'm still progressing through my reverse engineering work. If you have any idea what this updater is doing, please contact me :-)
+{{< note "This documentation is incomplete." >}}
+
+This is the program that actually processes the [patch files]({{< ref "format/patch" >}}) and applies them to the game or boot data.
 
 # Arguments
 
-**Note:** Just like the other executables, it requires you to pass these using the [SqexArg](concept/sqexarg) format.
+{{< note "Just like the other executables, it requires you to pass these using the [SqexArg](concept/sqexarg) format." >}}
 
 - BootVersion
     - The version of the boot component.
@@ -29,7 +31,8 @@ title: "ffxivupdater.exe"
     - This is the usual UserPath arugment, pointing to your FFXIV-ARR Documents directory.
 
 # Processes
-During update execution, the launcher(?) copies the updater executable into your `UserPath/downloads` directory, where it is then ran. I'm assuming this is to work around a Windows limitation where you can't update the executable on disk, so it has to be ran from a location where it could "update" itself.
+
+During update execution, the [launcher]({{< ref "executable/ffxivlauncher" >}}) copies the updater executable into your `UserPath/downloads` directory, where it is then ran. I'm assuming this is to work around a Windows limitation where you can't update the executable on disk, so it has to be ran from a location where it could "update" itself.
 
 ## ShowMode 2
 
@@ -46,20 +49,20 @@ The first one appears very minimal but might be the one used when it's not downl
 The second one appears to be the regular "downloading" patch mode, considering it says "downloadsize" right there.
 The last one would appear to be when it's actually applying the patches, as it has "remaintime" as well as "speed".
 
-# IPC
+## IPC
 
-It appears that ffxivlauncher.exe and ffxivupdater.exe is communicating exclusively through Win32 IPC (SendMessage). I haven't deciphered the actual messages yet, but here is a few interesting ones I've seen used:
+It looks like this communicates exclusively through Win32 IPC (SendMessage). I haven't deciphered all of the messages yet, but here is a few interesting ones I've seen used:
 
-## 0x7fc
+* 0x7fc
 
-The format is `{version:\"%s\",ID:%d}`. I'm guessing this means "install this patch", version obviously corresponds to the patch version, and maybe ID is the jumble of alphanumeric characters in the directory names of the ffxivpatch folder?
+  The format is `{version:\"%s\",ID:%d}`. I'm guessing this means "install this patch", version obviously corresponds to the patch version, and maybe ID is the jumble of alphanumeric characters in the directory names of the ffxivpatch folder?
 
-0xbd4 - unknown
+* 0xbd4 - unknown
 
-0x81a - unknown
+* 0x81a - unknown
 
 # Alternative Implementations
 
-* [XIVQuickLauncher (C#)](https://github.com/goatcorp/FFXIVQuickLauncher/tree/master/src/XIVLauncher.Common/Game/Patch)
 * [physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/patch.rs)
+* [XIVQuickLauncher (C#)](https://github.com/goatcorp/FFXIVQuickLauncher/tree/master/src/XIVLauncher.Common/Game/Patch)
 * [libxiv (C++)](https://git.sr.ht/~redstrate/libxiv/tree/main/item/src/patch.cpp)

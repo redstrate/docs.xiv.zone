@@ -1,19 +1,15 @@
-{{ partial "head.html" . }}
-
-<div id="center-wrapper">
-
-  {{ partial "header.html" . }}
-
-  <div id="wrapper">
-
-  <main>
-    {{- block "main" . }}{{- end }}
-</main>
-
-</div>
-
-{{ partial "footer.html" . }}
-
-</div>
-
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+    {{- partial "head.html" . -}}
+    <body>
+        <header>{{- partial "header.html" . -}}</header>
+        <div id="content">
+        <aside>{{- partial "sidebar.html" . -}}</aside>
+        <article>
+        {{- block "main" . }}{{- end }}
+        </article>
+        </div>
+        <footer>{{- partial "footer.html" . -}}</footer>
+    </body>
 </html>
+

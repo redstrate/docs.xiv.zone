@@ -1,9 +1,12 @@
 ---
-title: "MDL"
+title: "Model (.mdl)"
 ---
 
-**Note:** This documentation is incomplete.
+{{< note "This documentation is incomplete." >}}
 
-## Alternative Implementations
+A visual model.
 
+# Alternative Implementations
+
+* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/mdl.rs)
 * [libxiv (C++)](https://git.sr.ht/~redstrate/libxiv/tree/main/item/src/mdlparser.cpp)

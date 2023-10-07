@@ -1,53 +1,83 @@
-{{ $image := resources.Get "img/profile.jpg" }}
-{{ with $image }}
-{{ $resized := .Resize "webp 256x" }}
-<img class="fancy-img" alt="Profile Picture" width="{{ $resized.Width }}" height="{{ $resized.Height }}" src="{{ $resized.Permalink }}"/>
+{{ $current := . }}
+{{ template "tree-nav" dict "sect" .Site.Home.Sections "current" $current }}
+
+{{ define "tree-nav" }}
+  {{ $current := .current }}
+
+
+  <ul class="gdoc-nav__list">
+    {{ $sortBy := (default "title" | lower) }}
+    {{ range .sect.GroupBy "Weight" }}
+      {{ $rangeBy := .ByTitle }}
+
+      {{ if eq $sortBy "title" }}
+        {{ $rangeBy = .ByTitle }}
+      {{ else if eq $sortBy "linktitle" }}
+        {{ $rangeBy = .ByLinkTitle }}
+      {{ else if eq $sortBy "date" }}
+        {{ $rangeBy = .ByDate }}
+      {{ else if eq $sortBy "publishdate" }}
+        {{ $rangeBy = .ByPublishDate }}
+      {{ else if eq $sortBy "expirydate" }}
+        {{ $rangeBy = .ByExpiryDate }}
+      {{ else if eq $sortBy "lastmod" }}
+        {{ $rangeBy = .ByLastmod }}
+      {{ else if eq $sortBy "title_reverse" }}
+        {{ $rangeBy = .ByTitle.Reverse }}
+      {{ else if eq $sortBy "linktitle_reverse" }}
+        {{ $rangeBy = .ByLinkTitle.Reverse }}
+      {{ else if eq $sortBy "date_reverse" }}
+        {{ $rangeBy = .ByDate.Reverse }}
+      {{ else if eq $sortBy "publishdate_reverse" }}
+        {{ $rangeBy = .ByPublishDate.Reverse }}
+      {{ else if eq $sortBy "expirydate_reverse" }}
+        {{ $rangeBy = .ByExpiryDate.Reverse }}
+      {{ else if eq $sortBy "lastmod_reverse" }}
+        {{ $rangeBy = .ByLastmod.Reverse }}
+      {{ end }}
+
+      {{ range $rangeBy }}
+        {{ if not .Params.geekdocHidden }}
+          {{ $numberOfPages := (add (len .Pages) (len .Sections)) }}
+          {{ $isParent := and (ne $numberOfPages 0) (not .Params.geekdocFlatSection) }}
+          {{ $isCurrent := eq $current . }}
+          {{ $isAncestor := .IsAncestor $current }}
+          {{ $id := substr (sha1 .Permalink) 0 8 }}
+          {{ $doCollapse := and $isParent (or .Params.geekdocCollapseSection (default false .Site.Params.geekdocCollapseAllSections)) }}
+
+
+          <li>
+            <label>
+              {{ if or .Content .Params.geekdocFlatSection }}
+                <span class="flex">
+                  <a
+                    href="{{ .RelPermalink }}"
+                    class="gdoc-nav__entry{{- if eq $current . }}
+                      {{- printf " is-active" }}
+                    {{- end }}"
+                  >
+                        {{ .Title }}
+                  </a>
+                </span>
+              {{ else }}
+                {{ .Title }}
+              {{ end }}
+              {{ if $doCollapse }}
+                <svg class="gdoc-icon toggle gdoc_keyboard_arrow_left">
+                  <use xlink:href="#gdoc_keyboard_arrow_left"></use>
+                </svg>
+                <svg class="gdoc-icon toggle gdoc_keyboard_arrow_down">
+                  <use xlink:href="#gdoc_keyboard_arrow_down"></use>
+                </svg>
+              {{ end }}
+            </label>
+
+            {{ if $isParent }}
+              {{ template "tree-nav" dict "sect" .Pages "current" $current }}
+            {{ end }}
+          </li>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </ul>
 {{ end }}
-
-<div style="text-align: center; margin-top: 10px">
-    {{ $currentPage := . }}
-    {{ range $index, $element := .Site.Menus.formats }}
-    {{ $len := (len $.Site.Menus.formats) }}
-
-    <a class="header-link" title="{{ .Name }}" rel="me" href="{{ .URL  }}">{{ .Name }}</A>
-    
-    {{ if not (eq (add $index 1) $len) }}·{{ end }}
-    {{ end }}
-</div>
-
-<p>
-    Hey I do graphics dev, write tools, cross-platform stuff and contribute
-    where I can! I draw sometimes.
-</p>
-
-<hr>
-
-<p>Accounts:</p>
-
-<div id="social-links">
-    {{ $currentPage := . }}
-    {{ range .Site.Menus.links }}
-    {{ $icon := .Params.icon}}
-    <div><a class="header-link" title="{{ .Name }}" rel="me" href="{{ .URL  }}">{{ partial "svg" $icon }} {{ .Name }}</a></div>
-    {{ end }}
-    </div>
-
-<p>Contact:</p>
-
-<div id="social-links">
-{{ $currentPage := . }}
-{{ range .Site.Menus.contact }}
-{{ $icon := .Params.icon}}
-<div><a class="header-link" title="{{ .Name }}" rel="me" href="{{ .URL  }}">{{ partial "svg" $icon }} {{ .Name }}</a></div>
-{{ end }}
-</div>
-
-<p>Donate:</p>
-
-<div id="social-links">
-    {{ $currentPage := . }}
-    {{ range .Site.Menus.donate }}
-    {{ $icon := .Params.icon}}
-    <div><a class="header-link" title="{{ .Name }}" rel="me" href="{{ .URL  }}">{{ partial "svg" $icon }} {{ .Name }}</a></div>
-    {{ end }}
-</div>

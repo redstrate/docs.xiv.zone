@@ -2,7 +2,7 @@
 title: "Launching Dalamud"
 ---
 
-If you're developing your own launcher, you might be interested in integrating Dalamud support. Here's a detailed
+If you're developing your own launcher, you might be interested in integrating [Dalamud](https://github.com/goatcorp/Dalamud) support. Here's a detailed
 walk-through of setting up a proper Dalamud environment.
 
 # Grabbing .NET Runtime

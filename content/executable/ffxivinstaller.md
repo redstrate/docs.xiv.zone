@@ -1,5 +1,5 @@
 ---
-title: "ffxivinstaller.exe"
+title: "Installer (ffxivinstaller.exe)"
 ---
 
 This is not a standard InstallShield installer (at least to my knowledge) but seems to a self-extracting executable and then some form of InstallShield executable.

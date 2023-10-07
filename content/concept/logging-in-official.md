@@ -2,7 +2,7 @@
 title: "Logging into Official Servers"
 ---
 
-**Note:** This article currently only covers logging in via non-Steam Square Enix accounts.
+{{< note "This only covers logging in via non-Steam Square Enix accounts right now." >}}
 
 Logging into the official FFXIV servers is actually very simple, and all you need is the ability to send/receive HTTP requests, parse JSON responses and read some files off of the disk.
 
@@ -12,13 +12,13 @@ You'll also notice the variable `{unique_id}` used in some of the User Agents. T
 
 # Checking the Gate Status
 
-First you must check the gate status, which tells if the servers are under maintenance. The legitimate launcher will not allow you to log in if the gate is closed. **Square Enix does not expect legitimate users to enter servers under maintenance**, not that you even can.
+First you must check the gate status from the [Frontier server]({{< ref "server/frontier" >}}), which tells if the servers are under maintenance. The legitimate launcher will not allow you to log in if the gate is closed. **Square Enix does not expect legitimate users to enter servers under maintenance**, not that you even can.
 
 **GET** `https://frontier.ffxiv.com/worldStatus/gate_status.json`
 
 The response is a simple JSON as follows:
 
-```
+```json
 {
     "status": 1
 }
@@ -28,9 +28,9 @@ If the `status` is 1, the gate is open and you're free to log in. Any other valu
 
 # Boot Update Check
 
-You also need to ensure that the boot components of the game are properly updated.
+You also need to ensure that the boot components of the game are properly updated by contacting the [boot patch server]({{< ref "server/patch" >}}).
 
-**Note:** This is not a typo, and this endpoint is actually in plaintext HTTP. Seriously.
+{{< note "This is not a typo, and this endpoint is actually in plaintext HTTP..." >}}
 
 **GET** `http://patch-bootver.ffxiv.com/http/win32/ffxivneo_release_boot/{boot_version}`
 * User Agent: `FFXIV PATCH CLIENT` (macOS: `FFXIV-MAC PATCH CLIENT`)
@@ -39,7 +39,7 @@ You also need to ensure that the boot components of the game are properly update
 
 If you receive an empty response, then you don't need to update any of your boot components and proceed to the next step. However if your boot components are out of date, you will receive a list of patches to update.
 
-## Getting STORED
+# Getting STORED
 
 **GET** `https://ffxiv-login.square-enix.com/oauth/ffxivarr/login/top`
 * Query items:
@@ -59,7 +59,7 @@ If you receive an empty response, then you don't need to update any of your boot
 
 The response is actually fully formed HTML, most likely better suited for the real launcher where it's a web browser. However, if you have regex available, you can query the variables needed for later.
 
-**Note:** If you're logging in with a Steam service account, you can find your username using `<input name=""sqexid"" type=""hidden"" value=""(?<sqexid>.*)""\/>`.
+{{< note "If you're logging in with a Steam service account, you can find your username using `<input name=""sqexid"" type=""hidden"" value=""(?<sqexid>.*)""\/>`." >}}
 
 To get the `_STORED_` value, use `\t<\s*input .* name="_STORED_" value="(?<stored>.*)">` and use the second captured variable. You also need to the store the full URL of this request (including all of the queries) for use in the next request.
 
@@ -140,7 +140,7 @@ You'll want to store this completed hash as the variable `{boot_hash}` for the n
 
 Square Enix expects the launcher to pass it's "security check" next, and this request will also check for if any game updates are required too.
 
-**Note:** `{game_version}` is referring to the version stored in `$GAME_DIR/game/ffxivgame.ver`.
+{{< note "`{game_version}` is referring to the version stored in `$GAME_DIR/game/ffxivgame.ver`." >}}
 
 **POST** `https://patch-gamever.ffxiv.com/http/win32/ffxivneo_release_game/{game_version}/{SID}`
 * X-Hash-Check: `enabled`
@@ -157,15 +157,16 @@ ex1\t{ex1_version}\n
 ...
 ```
 
-Please note that the client must report **all** of it's installed expansions. The base game version is already reported in the request URL itself, so you should start at "ex1". Each entry in this body is seperated by newlines, except for the last entry. Yes, the `\t` in the body is referring to the tab character.
+Please note that the client must report **all** of it's installed expansions. The base game version is already reported in the request URL itself, so you should start at "ex1". Each entry in this body is separated by newlines, except for the last entry. Yes, the `\t` in the body is referring to the tab character.
 
 Once you send this request, there may or may not be a response body. First you'll want to check for the response header called `X-Patch-Unique-Id`, if this found then you've actually successfully registered a session! If this is missing, you may have triggered the anti-tamper check, or the game requires an update.
 
 The `{true_SID}` is now the value of the `X-Patch-Unique-ID` field. Congratulations, you now logged into the game!
 
-## Launching the game
+# Launching the game
 
-Now you can launch the game! See [ffxiv.exe](executable/ffxiv) for more arguments. For a quick rundown:
+Now you can launch the game! See [ffxiv.exe]({{< ref "executable/ffxiv" >}}) for more arguments.
+
 * Set `DEV.TestSID` to `{true_SID}`.
 * Set `DEV.MaxEntitledExpansionID` to `{max_expansion}`.
 * Set `SYS.Region` to `{region}`.

@@ -2,13 +2,9 @@
 title: "SqexArg"
 ---
 
-I also recommend reading the relevant [xiv.dev page on SqexArg](https://xiv.dev/sqexarg).
-
-## Purpose
-
 This is the "encrypted argument" format used by a lot of FFXIV programs and is used in place of regular plaintext command line arguments. However, this is barely a security measure and just prevents easily snooping stuff like your login token. Despite this, the SqexArg format is well known, reversible and easily breakable.
 
-## Format
+# Format
 
 When viewing the command line arguments for, say [ffxiv.exe](executable/ffxiv) you will see it's only something like this:
 
@@ -39,7 +35,7 @@ Let's break them down:
 * checksum
     * This is also covered in a later section, but this is always one character long and located at the end of the string.
 
-## Encryption Algorithm
+# Encryption Algorithm
 
 The resulting bytes when you decode the base64 string is going to Blowfish ECB encrypted.
 
@@ -51,7 +47,7 @@ The resulting bytes when you decode the base64 string is going to Blowfish ECB e
 
 **Note:** In the new Steam launcher update, Square Enix has actually switched to a more sane version of Blowfish ECB without their weird changes. Please look at [XIVQuickLauncher for the changes](https://github.com/goatcorp/FFXIVQuickLauncher/blob/master/src/XIVLauncher.Common/Encryption/BlockCipher/Blowfish.cs) required, as I have not tested this yet.
 
-### Key
+## Key
 
 The key used for encrypting/decrypting the encrypted arguments is just your **system's uptime clock**. All FFXIV executables just call `GetTickCount()`, and theres about ~50 or so ticks of freedom before the game or launcher considers it invalid. There is a specific transformation you need to do in order to fetch a valid key though:
 
@@ -66,7 +62,7 @@ sprintf(buffer, "%08x", key);
 
 To make this easier, here is a couple of platform-specific implementations of `TickCount()`. Thank you Wine for being easily searchable, as this is what Wine is actually doing under the hood to emulate `GetTickCount()`, so these are exact and have been tested on Astra for all platforms.
 
-#### Windows
+### Windows
 
 ```
 uint32_t TickCount() {
@@ -74,7 +70,7 @@ uint32_t TickCount() {
 }
 ```
 
-#### macOS
+### macOS
 
 ```
 uint32_t TickCount() {
@@ -89,7 +85,7 @@ uint32_t TickCount() {
 }
 ```
 
-#### Linux
+### Linux
 
 ```
 uint32_t TickCount() {
@@ -101,7 +97,7 @@ uint32_t TickCount() {
 }
 ```
 
-### Checksum
+## Checksum
 
 If you're just interested in decrypting game arguments, this is not essential. This is presumably used as a checksum
 when the game checks your encrypted string.
@@ -118,18 +114,22 @@ static char GetChecksum(unsigned int key) {
 }
 ```
 
-## Decrypting
+# Decrypting
 
 You can try the [dedicated argcracker](https://sr.ht/~redstrate/novus/#argcracker) in Novus for this purpose. It allows you to easily
 crack any SqexArg enabled program assuming you have access to the string.
 
-## Notes
+# Notes
 
 Every instance where SqexArg is used, the first argument is always `T`, where `T` is set to the value of `ticks` (as shown above). I'm not sure what the purpose of this really is, maybe for verifying the checksum?
 
 The arguments (before encoding of course) must be formatted as `" /%1 =%2"`. The extra space is required, even at the beginning of the arguments. Make sure that any spaces in your string is double padded as well.
 
-## Implementations
+# See Also
+
+* [SqexArg on xiv.dev](https://xiv.dev/sqexarg)
+
+# Implementations
 
 * [XIVQuickLauncher (C#)](https://github.com/goatcorp/FFXIVQuickLauncher/blob/master/src/XIVLauncher.Common/Encryption/ArgumentBuilder.cs)
 * [Astra (C++)](https://git.sr.ht/~redstrate/astra/tree/main/item/launcher/core/include/encryptedarg.h)
