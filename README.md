@@ -1,5 +1,7 @@
 # docs.xiv.zone
 
+[![builds.sr.ht status](https://builds.sr.ht/~redstrate/docs.xiv.zone.svg)](https://builds.sr.ht/~redstrate/docs.xiv.zone?)
+
 This is the source code of the website hosted at [docs.xiv.zone](https://docs.xiv.zone/).
 
 ## Building
@@ -21,6 +23,8 @@ $ hugo server
 ```
 
 ## License
+
+![License](https://licensebuttons.net/l/by-sa/3.0/88x31.png)
 
 The content of this website is licensed under [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). There may be other copyrighted works showcased on this website that are licensed differently.
 
