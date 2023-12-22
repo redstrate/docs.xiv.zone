@@ -28,7 +28,7 @@ For details on how logging into the Square Enix servers work, see the [relevant 
 
 {{< note "Like the other executables, it requires you to pass these using the [SqexArg](concept/sqexarg) format." >}}
 
-- ExecuteArg (**Required**)
+- `ExecuteArg` (**Required**)
     - This is a strange argument. This appears to be a random gibberish of numbers:
 
     `/T =1000000 /ExecuteArg =14431503 /UserPath =C:/users/yourname/Documents/My  Games/FINAL  FANTASY  XIV  -  A  Realm  Reborn`
@@ -42,8 +42,8 @@ For details on how logging into the Square Enix servers work, see the [relevant 
     - 3rd arg - current hour
     - 4th arg - current minute
 
-- UserPath
-    - Your usual path to your FFXIV data folder in Documents.
+- `UserPath`
+    - Your usual path to your FFXIV data folder in `My Documents`.
 
 # Alternative Implementations
 

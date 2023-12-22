@@ -8,7 +8,7 @@ I recommend reading the ["Excel List" section](https://xiv.dev/game-data/file-fo
 
 Describes Excel sheets that exist in the game data. A good example is is `exd/rool.exl` which contains many references to the game data. It's a text file containing a list of comma-separated strings, where each line is separated by a newline:
 
-```
+```txt
 EXLT,2
 Achievement,209
 Action,4

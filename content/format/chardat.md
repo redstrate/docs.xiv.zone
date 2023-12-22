@@ -4,49 +4,108 @@ title: "Character Creation Data (.dat)"
 
 {{< note "This documentation is incomplete." >}}
 
-Saved data from the character creation screen.
+This contains the data you can save and load from the character creator, used not only in the retail client but the benchmark versions too.
 
-# Structure
+# Reading
 
-There seems to be a few different versions of this format. Below is version 4:
+The structure is very simple, it's only a series of fields.
 
 ## Version 4
 
-| Offset | Type | Purpose |
-| ------ | ----- | ------ |
-| 0x00    | 32-bit integer | Magic, should be 0x2013FF14. |
-| 0x04    | 32-bit integer | The version of the file, in this case "4". |
-| 0x08    | 32-bit integer | Checksum of the data. |
-| 0x0C    | 32-bit integer | Unknown. |
-| 0x0D    | 8-bit unsigned integer | The character's race. |
-| 0x0E    | 8-bit unsigned integer | The character's gender. |
-| 0x0F    | 8-bit unsigned integer | The character's age. |
-| 0x10    | 8-bit unsigned integer | The character's age. 1 is "Normal", 3 is "Old" and 4 is "Young". |
-| 0x11    | 8-bit unsigned integer | The character's height from 0-255. |
-| 0x12    | 8-bit unsigned integer | The character's subrace. |
-| 0x13    | 8-bit unsigned integer | The character's head. |
-| 0x14    | 8-bit unsigned integer | The character's hair. |
-| 0x15    | 8-bit unsigned integer | If the character has hair highlights. |
-| 0x16    | 8-bit unsigned integer | The character's skin tone. |
-| 0x17    | 8-bit unsigned integer | The character's right eye color. |
-| 0x18    | 8-bit unsigned integer | The character's hair color. |
-| 0x19    | 8-bit unsigned integer | The character's hair highlights color. |
-| 0x1A    | 8-bit unsigned integer | The character's facial features. |
-| 0x1B    | 8-bit unsigned integer | If the character has limbal eyes. |
-| 0x1C    | 8-bit unsigned integer | The character's eyebrows. |
-| 0x1D    | 8-bit unsigned integer | The character's left eye color. |
-| 0x1E    | 8-bit unsigned integer | The character's eyes. |
-| 0x1F    | 8-bit unsigned integer | The character's nose. |
-| 0x20    | 8-bit unsigned integer | The character's jaw. |
-| 0x21    | 8-bit unsigned integer | The character's mouth. |
-| 0x22    | 8-bit unsigned integer | The character's lip/tone/fur/pattern. |
-| 0x23    | 8-bit unsigned integer | The character's tail. |
-| 0x24    | 8-bit unsigned integer | The character's face paint. |
-| 0x25    | 8-bit unsigned integer | The character's bust size from 0-255. |
-| 0x26    | 8-bit unsigned integer | The character's face paint color. |
-| 0x27    | 8-bit unsigned integer | The character's voice. |
-| 0x28    | 8-bit unsigned integer | Unknown. |
-| 0x29    | 32-bit unsigned integer | Timestamp? |
+```c++
+struct CharacterData {
+    // The version of the character data, the only supported version right now is 4.
+    uint32_t version: u32,
+
+    // The checksum of the data fields.
+    uint32_t checksum: u32,
+
+    uint32_t _unknown1;
+
+    // The race of the character.
+    uint8_t race: Race,
+
+    // The gender of the character.
+    uint8_t gender: Gender,
+
+    // The age of the character. Normal = 1, Old = 3, Young = 4.
+    uint8_t age: u8,
+
+    // The height of the character.
+    uint8_t height: u8,
+
+    // The character's subrace.
+    uint8_t subrace: Subrace,
+
+    // The character's selected head.
+    uint8_t head: u8,
+
+    // The character's selected hair.
+    uint8_t hair: u8,
+
+    // If hair highlights are enabled for this character.
+    uint8_t enable_highlights,
+
+    // The character's skin tone.
+    uint8_t skin_tone: u8,
+
+    // The character's right eye color.
+    uint8_t right_eye_color: u8,
+
+    // The character's hair color.
+    uint8_t hair_tone: u8,
+
+    // The color of the hair highlights.
+    uint8_t highlights: u8,
+
+    // The selected facial features.
+    uint8_t facial_features: u8,
+
+    // If the character has limbal eyes.
+    uint8_t limbal_eyes: u8,
+
+    // The character's selected eyebrows.
+    uint8_t eyebrows: u8,
+
+    // The character's left eye color.
+    uint8_t left_eye_color: u8,
+
+    // The character's selected eyes.
+    uint8_t eyes: u8,
+
+    // The character's selected nose.
+    uint8_t nose: u8,
+
+    // The character's selected jaw.
+    uint8_t jaw: u8,
+
+    // The character's selected mouth.
+    uint8_t mouth: u8,
+
+    // The character's selected pattern.
+    uint8_t lips_tone_fur_pattern: u8,
+
+    // The character's selected tail.
+    uint8_t tail: u8,
+
+    // The character's choice of face paint.
+    uint8_t face_paint: u8,
+
+    // The size of the character's bust.
+    uint8_t bust: u8,
+
+    // The color of the face paint.
+    uint8_t face_paint_color: u8,
+
+    // The character's chosen voice.
+    uint8_t voice: u8,
+
+    uint8_t _garbage;
+
+    // The timestamp when the preset was created.
+    uint8_t timestamp[4];
+};
+```
 
 # Alternative Implementations
 

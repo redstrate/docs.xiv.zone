@@ -2,34 +2,74 @@
 title: "Shader Package (.shpk)"
 ---
 
-{{< note "This documentation is incomplete, resource and scalar parameters are not documented yet." >}}
+{{< note "This documentation is incomplete, nodes and keys are not documented yet." >}}
 
-A collection of vertex and pixel shaders. A good example is _"character.shpk"_ which contains - you guessed it - character shaders.
+A collection of vertex and pixel shaders. For example, _"character.shpk"_ which contains shaders used for gear.
 
-# Header Structure
+# Reading
 
-All values are in **little-endian**.
+At the beginning of the binary file is a simple header which describes what DirectX version the shader package is for, and the sizes of various structures.
 
-| Offset | Type | Purpose |
-| ------ | ----- | ------ |
-| 0x00    | 4 character ASCII string | Magic, should read "ShPk". |
-| 0x04    | Unknown 4 byte. | Unknown. |
-| 0x08    | 4 character ASCII string | The format of the shader, e.g. "DX11". |
-| 0x0C    | 32-bit integer | File length in bytes. |
-| 0x10    | 32-bit integer | Offset in bytes to the shader bytecode. |
-| 0x14    | 32-bit integer | Offset in bytes to the parameter list. |
-| 0x18    | 32-bit integer | Number of vertex shaders. |
-| 0x1C    | 32-bit integer | Number of pixel shaders. |
-| 0x20    | 32-bit integer | Number of scalar parameters. |
-| 0x24    | 32-bit integer | Number of resource parameters. |
+## Header
 
-# Reading shader bytecode
+```c++
+struct ShaderPackageHeader {
+    // Should be "ShPk" (capitalization intentional)
+    uint8_t magic[4];
 
-Getting the shader bytecode from a shader package is easy, it begins at the shader bytecode offset in the header. Then, move your cursor up 12 bytes (to skip the initial `DXBC` ASCII, and some garbage data).
+    // Reads "DX9\0" (\0 being a null byte) for DX9 shaders, and "DX11" for DX11 shaders
+    uint8_t format[4];
 
-Then, collect a WORD (4 bytes) at a time and putting them into a buffer. Keep doing this until you hit the next `DXBC` ASCII and you found a complete shader bytecode. Rinse and repeat and you should have `N` shaders where `N = number of vertex shaders + number of pixel shaders`.
+    uint32_t fileLength;
+    uint32_t shaderDataOffset;
+    uint32_t stringsOffset;
+    uint32_t vertexShaderCount;
+    uint32_t pixelShaderCount;
+    uint32_t materialParametersSize;
+    uint32_t materialParameterCount;
+    uint32_t scalarParameterCount;
+    uint32_t resourceParameterCount;
+    uint32_t uavParameterCount;
+    uint32_t systemKeyCount;
+    uint32_t sceneKeyCount;
+    uint32_t materialKeyCount;
+    uint32_t nodeCount;
+    uint32_t nodeAliasCount;
+};
+```
 
-The format of this shader bytecode is nothing special, it's DXBC (the bytecode format used by DirectX before DXIL.) If you want to reverse this into something usable, like SPIR-V, HLSL or GLSL then you need to find a decompiler.
+Right after the header is the beginning of shader data. The process is identical between vertex and pixel shaders, and they're read in that order (the vertex shaders are all read first, and then the pixel shaders.)
+
+```c++
+struct Shader {
+    uint32_t dataOffset;
+    uint32_t dataSize;
+
+    uint16_t scalarParameterCount;
+    uint16_t resourceParameterCount;
+    uint16_t uavParameterCount;
+
+    uint16_t _unknown;
+
+    ResourceParameter scalarParameters[scalarParameterCount];
+    ResourceParameter resourceParameters[resourceParameterCount];
+    ResourceParameter uavParameters[uavParameterCount];
+};
+```
+
+Resource parameters are defined like so:
+
+```c++
+struct ResourceParameter {
+    uint32_t id;
+    uint32_t localStringOffset;
+    uint32_t stringLength;
+    uint16_t slot;
+    uint16_t size;
+};
+```
+
+The shaders are stored as DXBC bytecode (the bytecode used by DirectX before DXIL.) targetted to the shader level of their respective API as described in `format` above. The data blob starts at `ShaderPackageHeader::shaderDataOffset + Shader::dataOffset` to a length of `dataSize` bytes. To access the ResourceParameter name, they start at `ShaderPackageHeader::stringsOffset + ResourceParameter::localStringOffset` to a length of `stringLength` bytes.
 
 # Alternative Implementations
 

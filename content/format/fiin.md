@@ -4,7 +4,7 @@ title: "File Info (.fiin)"
 
 I don't know the actual purpose of this file, it seems to contain SHA1 of certain files. The filename is usually `fileinfo.fiin` (like in `/boot`) and start with a header like this:
 
-```
+```c++
 struct FileInfoHeader {
     char magic[9];
     uint8_t dummy1[16];
@@ -16,11 +16,11 @@ struct FileInfoHeader {
 };
 ```
 
-`magic` is always `FileInfo`.
+The content of `magic` is always `FileInfo`.
 
 To get the number of entries, calculate it like so:
 
-```
+```c++
 int overflow = info.header.unknown2;
 int extra = overflow * 256;
 int first = info.header.unknown1 / 96;
@@ -31,7 +31,7 @@ _(Note: I have no idea if this is actually necessary, and it could just be a uns
 
 Then each entry is located right after the header, and is structured as so:
 
-```
+```c++
 struct FileInfoEntry {
     uint8_t dummy[8]; // length of file name in some format
     char str[64]; // simple \0 encoded string
