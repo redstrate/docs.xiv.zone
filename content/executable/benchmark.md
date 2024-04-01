@@ -6,6 +6,7 @@ There have been several benchmarks publicly released, which are [modified client
 
 Despite the [official FFXIV Benchmark site](https://na.finalfantasyxiv.com/benchmark/) only displaying the latest expansion, all previous benchmarks are still accessible. An archive of all links are provided below.
 
+* [Original (1.x)](http://http.download.nvidia.com/downloads/nZone/demos/FFXIVBenchmark.zip)
 * [A Realm Reborn (2.x)](http://download.finalfantasyxiv.com/inst/FFXIV-ARR-Bench-Character.zip)
 * [Heavensward (3.x)](http://gdl.square-enix.com/ffxiv/inst/ffxiv-heavensward-bench.zip)
 * [Stormblood (4.x)](http://gdl.square-enix.com/ffxiv/ga61lwajq3g5r2qb/ffxiv-stormblood-bench.zip)
