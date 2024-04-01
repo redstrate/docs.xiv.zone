@@ -17,6 +17,7 @@ Alternative programs for the [official launcher]({{< ref "/executable/ffxivlaunc
 | XIV on Mac | Wine Wrapper, Setup tool and launcher for FFXIV on mac | http://www.xivmac.com/ |
 | microlaunch | A native Linux launcher for FINAL FANTASY XIV Online written in Rust | https://github.com/eorzeatools/microlaunch |
 | Astra | A FFXIV launcher that supports profiles, multiple accounts and Dalamud plugins. | https://xiv.zone/astra/ |
+| Seventh Umbral | Launcher for FFXIV 1.x | https://github.com/jpd002/SeventhUmbral |
 
 # Clients
 
@@ -34,6 +35,7 @@ Alternative programs for the official servers such as [Frontier]({{< ref "fronti
 | --- | --- | --- |
 | Sapphire | A Final Fantasy XIV 4.0+ Server Emulator written in C++ | https://github.com/SapphireServer/Sapphire/ |
 | Kawari | Substitute for some official FFXIV servers | https://git.sr.ht/~redstrate/kawari |
+| Project Meteor | Final Fantasy XIV 1.X Server Emulator | https://bitbucket.org/Ioncannon/project-meteor-server/ |
 
 # Libraries
 
