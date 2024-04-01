@@ -8,13 +8,25 @@ This is the program that logins into the official servers and launches the game.
 
 # History
 
-There are two different versions of the launcher, one "old" and one "new".
+Since FFXIV has been around for a long time, it's went through several launcher redesigns.
+
+## 1.x
+
+This is the old launcher designed used for 1.x versions, before A Realm Reborn. This is [a recreation by Ioncannon](http://ffxivclassic.fragmenterworks.com/), as I can't find a screenshot of the original login page anywhere online.
+
+![The old launcher design](ffxivlauncher-10.png)
+
+## 2.x
+
+The old launcher has been there since launch, but was on the path to be retired since the new launcher design was used.
 
 ![The old launcher design](ffxivlauncher-old.png)
 
-![The new launcher design](ffxivlauncher-new.png)
+## 6.5+
 
-The old launcher has been there since launch, but was on the path to be retired since the new launcher design was used. It seems as of Patch 6.5, the old launcher can no longer be used and all users must use the new design.
+It seems as of Patch 6.5, the old launcher can no longer be used and all users must use the new design.
+
+![The new launcher design](ffxivlauncher-new.png)
 
 # Internals
 
