@@ -72,5 +72,4 @@ For every vertex declaration (the count in `vertexDeclarationCount`) first read 
 
 # Alternative Implementations
 
-* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/mdl.rs)
-* [libxiv (C++)](https://git.sr.ht/~redstrate/libxiv/tree/main/item/src/mdlparser.cpp)
+* [Physis (Rust)](https://github.com/redstrate/physis/blob/main/src/mdl.rs)

@@ -8,4 +8,4 @@ A visual material.
 
 # Alternative Implementations
 
-* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/mtrl.rs)
+* [Physis (Rust)](https://github.com/redstrate/physis/blob/main/src/mtrl.rs)

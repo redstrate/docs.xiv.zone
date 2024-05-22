@@ -41,7 +41,7 @@ The resulting bytes when you decode the base64 string is going to Blowfish ECB e
 
 * However, please note that Square Enix does some weird bitflip endian-encoding nonsense which means your out-of-box Blowfish library might not work. I would highly recommend reading up on some existing implementations to get an idea of what to do:
     * [XIVQuickLauncher (C#)](https://github.com/goatcorp/FFXIVQuickLauncher/blob/master/src/XIVLauncher.Common/Encryption/LegacyBlowfish.cs)
-    * [Astra (C++)](https://git.sr.ht/~redstrate/astra/tree/main/item/launcher/core/include/blowfish.h)
+    * [Astra (C++)](https://github.com/redstrate/astra/blob/main/launcher/core/include/blowfish.h)
     * [XIV-on-Mac (Swift)](https://github.com/marzent/XIV-on-Mac/blob/main/XIV%20on%20Mac/Encryption.swift)
     * Before encrypting or decrypting, ensure the buffer is padded.
 
@@ -116,7 +116,7 @@ static char GetChecksum(unsigned int key) {
 
 # Decrypting
 
-You can try the [dedicated argcracker](https://sr.ht/~redstrate/novus/#argcracker) in Novus for this purpose. It allows you to easily
+You can try the [dedicated argcracker](https://github.com/redstrate/novus/blob/main/apps/argcracker) in Novus for this purpose. It allows you to easily
 crack any SqexArg enabled program assuming you have access to the string.
 
 # Notes
@@ -132,5 +132,5 @@ The arguments (before encoding of course) must be formatted as `" /%1 =%2"`. The
 # Implementations
 
 * [XIVQuickLauncher (C#)](https://github.com/goatcorp/FFXIVQuickLauncher/blob/master/src/XIVLauncher.Common/Encryption/ArgumentBuilder.cs)
-* [Astra (C++)](https://git.sr.ht/~redstrate/astra/tree/main/item/launcher/core/include/encryptedarg.h)
+* [Astra (C++)](https://github.com/redstrate/astra/blob/main/launcher/core/include/encryptedarg.h)
 * [XIV-on-Mac (Swift)](https://github.com/marzent/XIV-on-Mac/blob/main/XIV%20on%20Mac/Encryption.swift)

@@ -8,4 +8,4 @@ Visual texture.
 
 # Alternative Implementations
 
-* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/tex.rs)
+* [Physis (Rust)](https://github.com/redstrate/physis/blob/main/src/tex.rs)

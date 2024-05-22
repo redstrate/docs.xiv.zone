@@ -21,4 +21,4 @@ Keep in mind that categories can exist without any key-value pairs, as shown abo
 
 # Alternative Implementations
 
-* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/cfg.rs)
+* [Physis (Rust)](https://github.com/redstrate/physis/blob/main/src/cfg.rs)

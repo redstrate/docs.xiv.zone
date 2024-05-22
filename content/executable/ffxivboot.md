@@ -8,5 +8,5 @@ This executable handles launching [ffxivlauncher.exe](executable/ffxivlauncher),
 
 # Alternative Implementations
 
-* [Astra (C++)](https://git.sr.ht/~redstrate/astra/tree/main/item/launcher/src/squareboot.cpp)
 * [XIVQuickLauncher (C#)](https://github.com/goatcorp/FFXIVQuickLauncher/blob/master/src/XIVLauncher.Common/Game/Launcher.cs)
+* [Astra (C++)](https://github.com/redstrate/astra/blob/main/launcher/src/squareboot.cpp)

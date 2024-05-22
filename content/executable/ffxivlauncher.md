@@ -59,9 +59,9 @@ For details on how logging into the Square Enix servers work, see the [relevant 
 
 # Alternative Implementations
 
-* [Astra (C++)](https://sr.ht/~redstrate/astra/)
 * [XIVQuickLauncher (C#)](https://github.com/goatcorp/FFXIVQuickLauncher)
 * [XIVCore (C#)](https://github.com/goatcorp/XIVLauncher.Core)
 * [XIV-on-Mac (Swift)](https://github.com/marzent/XIV-on-Mac)
 * [microlaunch (Rust)](https://github.com/eorzeatools/microlaunch)
 * [L4-cpp (C++)](https://github.com/WorkingRobot/L4-cpp)
+* [Astra (C++)](https://github.com/redstrate/astra/)

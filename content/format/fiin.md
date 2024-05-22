@@ -43,5 +43,4 @@ This file appears to have SHA1 hashes, but for what purpose I do not know.
 
 # Alternative Implementations
 
-* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/fiin.rs)
-* [libxiv (C++)](https://git.sr.ht/~redstrate/libxiv/tree/main/item/src/fiinparser.cpp)
+* [Physis (Rust)](https://github.com/redstrate/physis/blob/main/src/fiin.rs)

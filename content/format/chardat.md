@@ -109,4 +109,4 @@ struct CharacterData {
 
 # Alternative Implementations
 
-* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/chardat.rs)
+* [Physis (Rust)](https://github.com/redstrate/physis/blob/main/src/chardat.rs)

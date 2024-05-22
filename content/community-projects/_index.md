@@ -34,7 +34,7 @@ Alternative programs for the official servers such as [Frontier]({{< ref "fronti
 | Name | Description | Website |
 | --- | --- | --- |
 | Sapphire | A Final Fantasy XIV 4.0+ Server Emulator written in C++ | https://github.com/SapphireServer/Sapphire/ |
-| Kawari | Substitute for some official FFXIV servers | https://git.sr.ht/~redstrate/kawari |
+| Kawari | Substitute for some official FFXIV servers | https://github.com/redstrate/kawari |
 | Project Meteor | Final Fantasy XIV 1.X Server Emulator | https://bitbucket.org/Ioncannon/project-meteor-server/ |
 
 # Libraries
@@ -46,8 +46,7 @@ Libraries to interact with game data, read formats and more.
 | xivModdingFramework | The library that powers TexTools. Can read/write models, textures, materials etc. | https://github.com/TexTools/xivModdingFramework |
 | Lumina | A simple, performant and extensible framework for interacting with FFXIV game data |  https://github.com/NotAdam/Lumina |
 | Xande | A C# library for interacting with FINAL FANTASY XIV models | https://github.com/xivdev/Xande |
-| Physis | Data framework for FFXIV | https://git.sr.ht/~redstrate/physis |
-| libxiv | A (deprecated) modding framework for FFXIV written in C++ | https://git.sr.ht/~redstrate/libxiv |
+| Physis | Data framework for FFXIV | https://github.com/redstrate/physis |
 
 # Plugin Frameworks
 

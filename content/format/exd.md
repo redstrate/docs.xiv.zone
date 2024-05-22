@@ -11,7 +11,6 @@ I recommend reading the ["Excel Data" section](https://xiv.dev/game-data/file-fo
 
 # Alternative Implementations
 
-* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/exd.rs)
-* [xivModdingFramework (C#)](https://github.com/TexTools/xivModdingFramework/tree/master/xivModdingFramework/Exd)
+* [xivModdingFramework (C#)](https://github.com/TexTools/xivModdingFramework/blob/master/xivModdingFramework/Exd)
 * [Lumina (C#)](https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Data/Files/Excel/ExcelDataFile.cs)
-* [libxiv (C++)](https://git.sr.ht/~redstrate/libxiv/tree/main/item/src/exdparser.cpp)
+* [Physis (Rust)](https://github.com/redstrate/physis/blob/main/src/exd.rs)

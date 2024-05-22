@@ -11,6 +11,5 @@ This is a schema file describing the column and row layout of an Excel sheet (su
 
 # Alternative Implementations
 
-* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/exh.rs)
 * [Lumina (C#)](https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Data/Files/Excel/ExcelHeaderFile.cs)
-* [libxiv (C++)](https://git.sr.ht/~redstrate/libxiv/tree/main/item/src/exhparser.cpp)
+* [Physis (Rust)](https://github.com/redstrate/physis/blob/main/src/exh.rs)

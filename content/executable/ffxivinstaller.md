@@ -16,5 +16,4 @@ They are simply put right next to each other in the executable, so if you follow
 
 # Alternative Implementations
 
-* [physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/installer.rs)
-* [libxiv (C++)](https://git.sr.ht/~redstrate/libxiv/tree/main/src/installextract.cpp)
+* [physis (Rust)](https://github.com/redstrate/physis/blob/main/src/installer.rs)

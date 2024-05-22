@@ -6,4 +6,4 @@ title: "Login"
 
 # Alternative Implementations
 
-* [Kawari (Rust)](https://git.sr.ht/~redstrate/kawari)
+* [Kawari (Rust)](https://github.com/redstrate/kawari)

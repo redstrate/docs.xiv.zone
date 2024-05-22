@@ -74,4 +74,4 @@ The shaders are stored as DXBC bytecode (the bytecode used by DirectX before DXI
 # Alternative Implementations
 
 * [SaintCoinach (C#)](https://github.com/xivapi/SaintCoinach/blob/master/SaintCoinach/Graphics/ShPk/ShPkFile.cs)
-* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/shpk.rs)
+* [Physis (Rust)](https://github.com/redstrate/physis/blob/main/src/shpk.rs)

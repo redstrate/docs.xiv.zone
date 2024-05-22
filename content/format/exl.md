@@ -22,6 +22,5 @@ With an Excel List parsed, you can then build a path to a [Excel header or .exh]
 
 # Alternative Implementations
 
-* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/exl.rs)
 * [Lumina (C#)](https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Data/Files/Excel/ExcelListFile.cs)
-* [libxiv (C++)](https://git.sr.ht/~redstrate/libxiv/tree/main/item/src/exlparser.cpp)
+* [Physis (Rust)](https://github.com/redstrate/physis/blob/main/src/exl.rs)

@@ -63,6 +63,5 @@ It looks like this communicates exclusively through Win32 IPC (SendMessage). I h
 
 # Alternative Implementations
 
-* [physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/patch.rs)
-* [XIVQuickLauncher (C#)](https://github.com/goatcorp/FFXIVQuickLauncher/tree/master/src/XIVLauncher.Common/Game/Patch)
-* [libxiv (C++)](https://git.sr.ht/~redstrate/libxiv/tree/main/item/src/patch.cpp)
+* [XIVQuickLauncher (C#)](https://github.com/goatcorp/FFXIVQuickLauncher/blob/master/src/XIVLauncher.Common/Game/Patch)
+* [physis (Rust)](https://github.com/redstrate/physis/blob/main/src/patch.rs)

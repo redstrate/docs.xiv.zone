@@ -12,4 +12,4 @@ The PS3 and PS4 versions of the game used to use the same patch system as the Wi
 
 # Alternative Implementations
 
-* [Kawari (Rust)](https://git.sr.ht/~redstrate/kawari)
+* [Kawari (Rust)](https://github.com/redstrate/kawari)

@@ -10,5 +10,4 @@ I recommend reading the ["ZiPatch" section](https://xiv.dev/data-files/zipatch) 
 
 # Alternative Implementations
 
-* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/patch.rs)
-* [libxiv (C++)](https://git.sr.ht/~redstrate/libxiv/tree/main/item/src/patch.cpp)
+* [Physis (Rust)](https://github.com/redstrate/physis/blob/main/src/patch.rs)

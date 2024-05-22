@@ -70,4 +70,4 @@ for (uint32_t offset : offsets) {
 
 # Alternative Implementations
 
-* [Physis (Rust)](https://git.sr.ht/~redstrate/physis/tree/main/item/src/log.rs)
+* [Physis (Rust)](https://github.com/redstrate/physis/blob/main/src/log.rs)
