@@ -61,7 +61,7 @@ cargo install --git https://github.com/redstrate/DalamudRepoTool.git
 And then run it on your repository:
 
 ```shell
-DalamudRepoTool --repo-path <your repository path where the State.toml is>
+DalamudRepoTool --download-host <URL to your hosted repository without the stable channel path> --repo-path <your repository path where the State.toml is>
 ```
 
 When it's done, it will create a `repo.json` where the `State.toml` was. Your repository is complete and can now be used in Dalamud!
