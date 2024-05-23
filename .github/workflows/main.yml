@@ -1,0 +1,29 @@
+name: Deploy
+on: [push]
+
+jobs:
+  deploy:
+    name: Deploy Website
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up SSH key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.DEPLOY_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+
+    - uses: actions/checkout@v4
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v3
+      with:
+        hugo-version: '0.126.1'
+        extended: true
+
+    - name: Build
+      run: hugo --minify
+
+    - name: Upload Repository
+      if: github.ref == 'refs/heads/main'
+      run: |
+        rsync -e "ssh -p 38901 -o StrictHostKeyChecking=no" --recursive public/ deploy@ryne.moe:/srv/http/docs.xiv.zone
