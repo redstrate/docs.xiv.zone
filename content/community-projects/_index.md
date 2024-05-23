@@ -33,7 +33,7 @@ Alternative programs for the official servers such as [Frontier]({{< ref "fronti
 | --- | --- | --- |
 | Sapphire | A Final Fantasy XIV 4.0+ Server Emulator written in C++ | https://github.com/SapphireServer/Sapphire/ |
 | Project Meteor | Final Fantasy XIV 1.X Server Emulator | https://bitbucket.org/Ioncannon/project-meteor-server/ |
-| Kawari[^1] | Substitute for some official FFXIV servers | https://git.sr.ht/~redstrate/kawari |
+| Kawari[^1] | Substitute for some official FFXIV servers | https://github.com/redstrate/kawari |
 
 # Libraries
 
@@ -46,7 +46,7 @@ Libraries to interact with game data, read formats and more.
 | Xande | A C# library for interacting with FINAL FANTASY XIV models | https://github.com/xivdev/Xande |
 | Penumbra.GameData | Game Data preparation for Penumbra. | https://github.com/Ottermandias/Penumbra.GameData/ |
 | FFXIVClientStructs | Resources for reverse-engineering the FFXIV client's native classes. | https://github.com/aers/FFXIVClientStructs/ |
-| Physis[^1] | Data framework for FFXIV | https://git.sr.ht/~redstrate/physis |
+| Physis[^1] | Data framework for FFXIV | https://github.com/redstrate/physis |
 
 # Plugin Frameworks
 
