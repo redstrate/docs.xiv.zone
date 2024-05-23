@@ -1,8 +1,8 @@
 ---
-title: "PlayStation 3"
+title: "PlayStation 3 Client"
 ---
 
-In [mid-2017 Square Enix officially ended support for the PlayStation 3 version](https://na.finalfantasyxiv.com/lodestone/topics/detail/a8db3b52eae5f11037a16ef7a637368a2ec5ed08). This guide covers how to crack open and mess with the game files, assuming you have a legitimate retail copy. Unfortunately reverse engineering PS3 games is slowly becoming a lost art, I hope to give a quick guide on how to do so.
+In [mid-2017, Square Enix officially ended support for the PlayStation 3 version](https://na.finalfantasyxiv.com/lodestone/topics/detail/a8db3b52eae5f11037a16ef7a637368a2ec5ed08). This guide covers how to crack open and mess with the game files, assuming you have a legitimate retail copy. Unfortunately reverse engineering PS3 games is slowly becoming a lost art, so here's a quick guide to get started!
 
 # Obtaining a copy
 
@@ -32,7 +32,7 @@ $ pkgrip INSTALL.PKG
 
 This process should only take a few minutes and dump the file tree into your current directory.
 
-Once the contents of the PKG file are dumped, you'll see a very similar looking file structure to the file game. There are a few excpetions:
+Once the contents of the PKG file are dumped, you'll see a very similar looking folder structure. There are a few excpetions:
 * The [Bink video files](https://www.radgametools.com/bnkmain.htm) under `game/movie/ffxiv` are "pam" files. No idea what those are yet.
 * The `dat0` and `index` files are suffixed with `ps3` instead of `win32`, of course.
 	* Curiously, there are `sdat` files as well. Maybe these are encrypted?

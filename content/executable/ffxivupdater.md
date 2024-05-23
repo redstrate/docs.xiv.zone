@@ -4,7 +4,7 @@ title: "Updater (ffxivupdater.exe)"
 
 {{< note "This documentation is incomplete." >}}
 
-This is the program that actually processes the [patch files]({{< ref "format/patch" >}}) and applies them to the game or boot data.
+The program that processes the [patch files]({{< ref "format/patch" >}}) and applies them to the game or boot data.
 
 # Arguments
 

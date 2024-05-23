@@ -12,5 +12,6 @@ Despite the [official FFXIV Benchmark site](https://na.finalfantasyxiv.com/bench
 * [Stormblood (4.x)](http://gdl.square-enix.com/ffxiv/ga61lwajq3g5r2qb/ffxiv-stormblood-bench.zip)
 * [Shadowbringers (5.x)](https://gdl.square-enix.com/ffxiv/nr2xkhecw9vrkuqy/ffxiv-shadowbringers-bench.zip?=benchmark)
 * [Endwalker (6.x)](https://download.finalfantasyxiv.com/ys8glaimvmykn88p/ffxiv-endwalker-bench.zip)
+* [Dawntrail (7.x)](https://download.finalfantasyxiv.com/s9qmq6SJfMMqYM4o/ffxiv-dawntrail-bench.zip)
 
 {{< note "ARR and Heavenward place the benchmark files under a `/inst` directory on their server. Expansions afterward, place it under a directory with a directory with a seemingly randomized string such as 'nr2xkhecw9vrkuqy'." >}}

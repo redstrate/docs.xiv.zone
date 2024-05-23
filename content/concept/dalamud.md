@@ -1,5 +1,5 @@
 ---
-title: "Launching Dalamud"
+title: "Integrating Dalamud"
 ---
 
 If you're developing your own launcher, you might be interested in integrating [Dalamud](https://github.com/goatcorp/Dalamud) support. Here's a detailed
@@ -9,11 +9,11 @@ walk-through of setting up a proper Dalamud environment.
 
 You'll need a .NET environment to actually launch Dalamud, since it's based it uses .NET. It won't try to use your system .NET, and will require to put it into a separate directory.
 
-In order to determine which .NET runtime you need, first check dalamud-distrib using the following URL:
+In order to determine which .NET runtime you need, first check the Dalamud Distribution server using the following URL:
 
-`https://goatcorp.github.io/dalamud-distrib/version`
+`https://kamori.goats.dev/Dalamud/Release/VersionInfo`
 
-This will return a JSON containing keys for `RuntimeVersion`. This is the required .NET runtime, which then can be fetched directly from Microsoft:
+This will return a JSON containing keys for `runtimeVersion`. This is the required .NET runtime, which then can be fetched directly from Microsoft:
 
 `https://dotnetcli.azureedge.net/dotnet/Runtime/%1/dotnet-runtime-%1-win-x64.zip`
 
@@ -23,9 +23,7 @@ You can then extract both zip files into some directory, henceforth called `$RUN
 
 # Grabbing Dalamud
 
-Now you can grab dalamud from dalamud-distrib:
-
-`https://goatcorp.github.io/latest.zip`
+Now you can grab Dalamud from Dalamud Distribution (`https://kamori.goats.dev/Dalamud/Release/VersionInfo`) where the URL is `downloadUrl`.
 
 You can then extract this zip file, and the resulting directory will be referred to as `$DALAMUD_DIR`.
 
@@ -37,17 +35,16 @@ These are not grabbed by Dalamud (for some reason) and instead you must download
 
 You can find the asset manifest at:
 
-`https://goatcorp.github.io/DalamudAssets/asset.json`
+`https://kamori.goats.dev/Dalamud/Asset/Meta`
 
-This is simply a long JSON describing where to find the assets, the current version and where to put them. The directory you put
-assets in will be called `$DALAMUD_ASSET_DIR`.
+This is simply a long JSON describing where to find the assets, the current version and where to put them. It's recommended to use the `packageUrl` to download all of the assets at once. The directory you put assets in will be called `$DALAMUD_ASSET_DIR`.
 
 # Launching Dalamud
 
 Now with all of your ugly ducklings in a row, you can begin launching Dalamud! First, please make
 sure these environment variables are set **on the game process and all relevant processes and children**. Please double check these, as Dalamud may silently fail without them.
 
-* `DALAMUD_RUNTIME` should be set to your`$RUNTIME_DIR`.
+* `DALAMUD_RUNTIME` should be set to your `$RUNTIME_DIR`.
 * If you are in Wine, please set `XL_WINEONLINUX`.
 
 1. Launch `$DALAMUD_DIR/Dalamud.Injector.exe`.
