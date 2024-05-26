@@ -87,6 +87,10 @@ Currently the website has to be kept up to date manually:
 2. Create a new version page & update the changelog link.
 3. Update the source tarball link, including the size (if changed) and the SHA256.
 
+## Update the Flatpak
+
+Make sure to run the process described in [Updating the Flatpak](astra/updating-flatpak).
+
 ## Update the distro packaging
 
 There are three packages to update and test:
