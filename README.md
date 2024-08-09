@@ -1,7 +1,5 @@
 # docs.xiv.zone
 
-[![builds.sr.ht status](https://builds.sr.ht/~redstrate/docs.xiv.zone.svg)](https://builds.sr.ht/~redstrate/docs.xiv.zone?)
-
 This is the source code of the website hosted at [docs.xiv.zone](https://docs.xiv.zone/).
 
 ## Building
