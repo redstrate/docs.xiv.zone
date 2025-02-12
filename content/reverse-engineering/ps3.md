@@ -23,7 +23,7 @@ Move this file to another location, as that's all we need from the disc.
 
 # Dumping the .PKG file
 
-This is a ["software update package" or PKG](https://psdevwiki.com/ps3/PKG_files) used for installing the game on a PS3. These are encrypted and compressed, but there is a software tool called `pkgrip` which we will use to extract it's contents. Clone and build the tool from [here](https://github.com/redstrate/pkgrip) and then run it:
+This is a ["software update package" or PKG](https://psdevwiki.com/ps3/PKG_files) used for installing the game on a PS3. These are encrypted and compressed, but there is a software tool called `pkgrip` which we will use to extract it's contents. Clone and build the tool from [here](https://codeberg.org/redstrate/pkgrip) and then run it:
 
 ```shell
 $ pkgrip INSTALL.PKG
