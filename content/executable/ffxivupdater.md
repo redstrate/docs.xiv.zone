@@ -10,24 +10,24 @@ The program that processes the [patch files]({{< ref "format/patch" >}}) and app
 
 {{< note "Just like the other executables, it requires you to pass these using the [SqexArg](concept/sqexarg) format." >}}
 
-- BootVersion
+- `BootVersion`
     - The version of the boot component.
-- GameVersion
+- `GameVersion`
     - The version of the game component, however I'm curious as to the purpose of this variable. Is the patcher itself fetching the patches required for the provided game version?
-- CallerWindow
+- `CallerWindow`
     - This seems to be the HWND which it sends messages to. Passing a HWND that is setup to receive messages, it appears to yield a 0x74 message (OpenWindow I believe) which means this is the most likely case. More on the IPC below.
-- IsSteam
+- `IsSteam`
     - Obviously, to check if this is the Steam version. I have not reversed the game arguments of the Steam version yet.
-- NextExe
+- `NextExe`
     - I'm not entirely sure what the purpose of this is yet. It makes no sense for the updater to call the game itself, I'm pretty sure this is used for "patch chaining" but it's
     also set for regular game patches. For example, when updating the game through the launcher it points to ffxiv.exe. Note that it is not ffxiv_dx11.exe, which means this is
     probably unused in the retail launcher.
-- ShowMode
+- `ShowMode`
     - This is the most interesting parameter, more testing is needed. There is multiple values here, and some of them correspond to known launcher behavior:
     - 1: This seems to be some sort of standalone updater window that I've never seen before in retail. Is this a leftover from a older version of the game? For example, it looks for "LauncherPatchInstall.list" (I can't seem to recreate this file). I have not gotten it to read from a "GamePatchInstall.list" either, however there is probably some other parameter to trigger this change. This "list" format is also unknown.
     - 2: This has no user-visible window, and is the "default mode" when launched properly through ffxivlauncher.exe. It's communicating through regular Win32 IPC I believe, back to the launcher where the launcher updates it's own window.
     - 3: I haven't gotten this mode to work, but on the standalone updater window it mentions "repairing game files". I believe this is what's used by the "repair game files" button in the launcher, but I've never used it before nor do I know it's actual purpose (just checking hashes?).
-- UserPath
+- `UserPath`
     - This is the usual UserPath arugment, pointing to your FFXIV-ARR Documents directory.
 
 # Processes

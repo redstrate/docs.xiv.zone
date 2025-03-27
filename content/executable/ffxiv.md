@@ -4,11 +4,11 @@ title: "Client (ffxiv.exe)"
 
 This is the game client executable.
 
-{{< note "There are two separate executables for DirectX 11 and DirectX 9. The DX11 version is named `ffxiv_dx11.exe`. The DX9 version will be removed in a future update." >}}
+{{< info "There was two separate executables for DirectX 11 and DirectX 9. The DX11 version is named `ffxiv_dx11.exe`. The DX9 version was removed and is no longer in the retail release." >}}
 
 # Arguments
 
-{{< info "Unlike other executables, passing arguments encrypted with SqexArg is optional for the client. It's recommended that you do so if you're planning to use actual SIDs though." >}}
+{{< note "Unlike other executables, passing arguments encrypted with SqexArg is optional for the client. It's recommended that you do so if you're planning to use actual SIDs though." >}}
 
 There a few known arguments that work on the normal game client:
 

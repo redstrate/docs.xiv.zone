@@ -2,7 +2,7 @@
 title: "Logging into Official Servers"
 ---
 
-{{< note "This only covers logging in via non-Steam Square Enix accounts right now." >}}
+{{< info "This only covers logging in via non-Steam Square Enix accounts right now." >}}
 
 Logging into the official FFXIV servers is actually very simple, and all you need is the ability to send/receive HTTP requests, parse JSON responses and read some files off of the disk.
 

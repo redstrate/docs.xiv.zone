@@ -2,9 +2,9 @@
 title: "Creating your own Dalamud repository"
 ---
 
-{{< note "This is for creating a 3rd party repository, which is probably not what you want. Almost all plugins should be submitted to the main repository, see https://dalamud.dev/plugin-development/plugin-submission." >}}
+{{< info "This is for creating a 3rd party repository, which is probably not what you want. Almost all plugins should be submitted to the main repository, see https://dalamud.dev/plugin-development/plugin-submission." >}}
 
-Creating a 3rd party Dalamud repository is easy, since it's pretty stateless and only requires you to host the files somewhere. People even host them on free servers like GitHub.
+Creating a 3rd party Dalamud repository is easy, because it's stateless and can be on any publicly accessible static location on the web.
 
 # Plugin Manifests
 

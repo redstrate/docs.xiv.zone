@@ -2,7 +2,7 @@
 title: "Home"
 ---
 
-A garden of knowledge on FFXIV, a certain critically acclaimed MMO. Most of this is centered around A Realm Reborn (2.x+)
+My garden of knowledge of a certain, critically acclaimed MMO. Most of this information is about A Realm Reborn (2.x+) and later expansions.
 
 # See Also
 

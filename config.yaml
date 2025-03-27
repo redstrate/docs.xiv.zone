@@ -17,4 +17,6 @@ markup:
 title: 'XIV Docs'
 theme: 'mytheme'
 timeZone: 'UTC'
-paginate: 20
+
+pagination:
+    paginate: 20

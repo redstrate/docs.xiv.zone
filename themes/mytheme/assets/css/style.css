@@ -163,3 +163,7 @@ footer {
 .info p {
     margin: 0em;
 }
+
+article {
+    margin-right: 20px;
+}

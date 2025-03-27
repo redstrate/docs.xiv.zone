@@ -1,11 +1,14 @@
 {{ $current := . }}
-{{ template "tree-nav" dict "sect" .Site.Home.Sections "current" $current }}
+{{ template "tree-nav" dict "sect" .Site.Home.Sections "current" $current "top" $current }}
 
 {{ define "tree-nav" }}
   {{ $current := .current }}
 
-
   <ul class="gdoc-nav__list">
+    {{ if .top }}
+      <li><a href="/">Home</a></li>
+    {{ end }}
+
     {{ $sortBy := (default "title" | lower) }}
     {{ range .sect.GroupBy "Weight" }}
       {{ $rangeBy := .ByTitle }}

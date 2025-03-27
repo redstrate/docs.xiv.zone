@@ -8,14 +8,14 @@ This is the "encrypted argument" format used by a lot of FFXIV programs and is u
 
 When viewing the command line arguments for, say [ffxiv.exe](executable/ffxiv) you will see it's only something like this:
 
-```
+```shell
 //**sqex0003S2_Utl8qdamv3_82SH7Lhtk=S**//
 ```
 _(Yes, I did garble some of the text, so it's not actually decodable :-))_
 
 There are three distinct parts of this string:
 
-```
+```shell
 //**sqex0003S2_Utl8qdamv3_82SH7Lhtk=S**//
            ^^                       ^
     version||                       |
@@ -51,7 +51,7 @@ The resulting bytes when you decode the base64 string is going to Blowfish ECB e
 
 The key used for encrypting/decrypting the encrypted arguments is just your **system's uptime clock**. All FFXIV executables just call `GetTickCount()`, and theres about ~50 or so ticks of freedom before the game or launcher considers it invalid. There is a specific transformation you need to do in order to fetch a valid key though:
 
-```
+```cpp
 unsigned int rawTicks = TickCount();
 unsigned int ticks = rawTicks & 0xFFFFFFFFu;
 unsigned int key = ticks & 0xFFFF0000u;
@@ -64,7 +64,7 @@ To make this easier, here is a couple of platform-specific implementations of `T
 
 ### Windows
 
-```
+```cpp
 uint32_t TickCount() {
     return GetTickCount();
 }
@@ -72,7 +72,7 @@ uint32_t TickCount() {
 
 ### macOS
 
-```
+```cpp
 uint32_t TickCount() {
     struct mach_timebase_info timebase;
     mach_timebase_info(&timebase);
@@ -87,7 +87,7 @@ uint32_t TickCount() {
 
 ### Linux
 
-```
+```cpp
 uint32_t TickCount() {
     struct timespec ts;
 
@@ -102,7 +102,7 @@ uint32_t TickCount() {
 If you're just interested in decrypting game arguments, this is not essential. This is presumably used as a checksum
 when the game checks your encrypted string.
 
-```
+```cpp
 static char ChecksumTable[] = {
     'f', 'X', '1', 'p', 'G', 't', 'd', 'S',
     '5', 'C', 'A', 'P', '4', '_', 'V', 'L'
